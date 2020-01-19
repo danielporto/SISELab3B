@@ -1,3 +1,6 @@
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ExerciseB {
     public static final int NUM_ITER = 1000;
@@ -33,7 +36,7 @@ public class ExerciseB {
     }//Threadclass
 
     public static void main (String[] args) throws Exception {
-        Map<Integer, Integer> DB = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> DB = new ConcurrentHashMap<>();
         Thread a = new MyThread(DB);
         Thread b = new MyThread(DB);
 
