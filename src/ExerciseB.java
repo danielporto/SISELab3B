@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class ExerciseB {
-    public static final int NUM_ITER = 1000;
-    public static final int NUM_ELEMENTS = 5;
+    public static final int NUM_ITER = 1000000;
+    public static final int NUM_ELEMENTS = 500;
 
     static class MyThread extends Thread {
         private Map<Integer, Integer> database;
@@ -42,12 +42,13 @@ public class ExerciseB {
 
         Thread a = new MyThread(DB);
         Thread b = new MyThread(DB);
-
+        long start = System.currentTimeMillis();
         a.start();
         b.start();
 
         a.join();
         b.join();
+        long end = System.currentTimeMillis();
         // sum the elements in the map
         int total = 0;
         for(int i=0; i < NUM_ELEMENTS; i++) {
@@ -58,6 +59,7 @@ public class ExerciseB {
             }
         }//for
         System.out.println("Total items:"+total);
+        System.out.println("Duration in ms:"+(end-start));
 
     }
 }
